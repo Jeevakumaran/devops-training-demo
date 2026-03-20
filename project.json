@@ -1,0 +1,7 @@
+{
+    "name": "devops-training-demo",
+    "version": "1.0.0",
+    "description": "A demo project used during DevOps training to practice Git workflows",
+    "author": "DevOps Trainer",
+    "topics": ["devops", "training", "git", "demo"]
+}
