@@ -1,4 +1,3 @@
-```groovy
 #!/usr/bin/env groovy
 
 // Scripted Pipeline — runs inside a node (Jenkins agent)`  
@@ -67,6 +66,5 @@ node {
         echo "BUILD SUCCESSFUL — All checks passed on branch ${env.BRANCH_NAME}!"
     }
 }
-```
 
   
