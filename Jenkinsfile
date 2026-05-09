@@ -1,10 +1,11 @@
 #!/usr/bin/env groovy
 
-// Import the shared library by name (configured in Jenkins global settings)
+// Import the shared library by name
 @Library('devops-shared-lib') _
 
 // Scripted Pipeline
 node {
+
     stage('Checkout') {
         checkout scm
     }
@@ -18,8 +19,8 @@ node {
     }
 
     stage('Validate') {
-        // Calling the shared library function!
-        // This runs the code from vars/validateProject.groovy
+
+        // Shared library function
         validateProject(requiredFiles: [
             'project.json',
             'README.md',
@@ -28,8 +29,10 @@ node {
     }
 
     stage('Test') {
+
         sh '''
             echo "--- HTML Validation ---"
+
             if grep -q "<html" app/index.html; then
                 echo "PASS: index.html contains valid HTML"
             else
@@ -40,13 +43,13 @@ node {
     }
 
     stage('Stats') {
-        // Another shared library function
+
+        // Shared library function
         codeStats()
     }
 
     stage('Report') {
-        // Shared library notification function
-        notifyBuild(status: 'SUCCESS')
+
+        echo "--- Build completed successfully ---"
     }
 }
-  
